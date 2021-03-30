@@ -23,27 +23,36 @@ namespace RecruitmentTaskBatchApp.Utils
             }
         }
 
-        public static string SaveLocation
+        public static string FileLocation
         {
             get {
                 Initialize();
-                return data.SaveLocation;
+                return data.FileLocation;
             }
         }
 
-        public static string SaveFileName
+        public static string FileNamePattern
         {
             get {
                 Initialize();
-                return data.SaveFileName;
+                return data.FileNamePattern;
+            }
+        }
+
+        public static string ArchiveLocation
+        {
+            get {
+                Initialize();
+                return data.ArchiveLocation;
             }
         }
 
         [Serializable]
         private class ConfigData
         {
-            public string SaveLocation { get; set; }
-            public string SaveFileName { get; set; }
+            public string FileLocation { get; set; }
+            public string FileNamePattern { get; set; }
+            public string ArchiveLocation { get; set; }
         }
     }
 }

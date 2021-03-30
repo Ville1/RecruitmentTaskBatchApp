@@ -1,4 +1,5 @@
 {
-  "SaveLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp",
-  "SaveFileName": "emails_{0}.txt"
+  "FileLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp",
+  "ArchiveLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp\\Archive",
+  "FileNamePattern": "emails_????????.txt"
 }

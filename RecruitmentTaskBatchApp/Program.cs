@@ -1,5 +1,7 @@
-﻿using RecruitmentTaskBatchApp.Utils;
+﻿using RecruitmentTaskBatchApp.Data;
+using RecruitmentTaskBatchApp.Utils;
 using System;
+using System.Collections.Generic;
 
 namespace RecruitmentTaskBatchApp
 {
@@ -7,7 +9,7 @@ namespace RecruitmentTaskBatchApp
     {
         static void Main(string[] args)
         {
-            var a = Config.SaveFileName;
+            List<FileData> data = FileManager.Read();
         }
     }
 }
