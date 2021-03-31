@@ -47,12 +47,21 @@ namespace RecruitmentTaskBatchApp.Utils
             }
         }
 
+        public static string DBConnectionString
+        {
+            get {
+                Initialize();
+                return data.DBConnectionString;
+            }
+        }
+
         [Serializable]
         private class ConfigData
         {
             public string FileLocation { get; set; }
             public string FileNamePattern { get; set; }
             public string ArchiveLocation { get; set; }
+            public string DBConnectionString { get; set; }
         }
     }
 }

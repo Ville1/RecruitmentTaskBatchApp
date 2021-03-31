@@ -20,8 +20,8 @@ namespace RecruitmentTaskBatchApp.Utils
                     jsonStringBuilder.Append("]}");
                     data.Add(new FileData() {
                         FullName = fullFileName,
-                        Emails = JsonConvert.DeserializeObject<EmailDataWrapper>(jsonStringBuilder.ToString()).Data }
-                    );
+                        Emails = JsonConvert.DeserializeObject<EmailDataWrapper>(jsonStringBuilder.ToString()).Data
+                    });
                 }
                 return data;
             } catch(Exception exception) {
