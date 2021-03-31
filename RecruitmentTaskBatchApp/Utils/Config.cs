@@ -55,6 +55,14 @@ namespace RecruitmentTaskBatchApp.Utils
             }
         }
 
+        public static bool ArchiveOldFiles
+        {
+            get {
+                Initialize();
+                return data.ArchiveOldFiles;
+            }
+        }
+
         [Serializable]
         private class ConfigData
         {
@@ -62,6 +70,7 @@ namespace RecruitmentTaskBatchApp.Utils
             public string FileNamePattern { get; set; }
             public string ArchiveLocation { get; set; }
             public string DBConnectionString { get; set; }
+            public bool ArchiveOldFiles { get; set; }
         }
     }
 }

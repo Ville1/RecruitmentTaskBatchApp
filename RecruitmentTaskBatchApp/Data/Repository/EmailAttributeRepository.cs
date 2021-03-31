@@ -7,17 +7,14 @@ using System.Linq;
 
 namespace RecruitmentTaskBatchApp.Data.Repository
 {
-    public class EmailRepository
+    public class EmailAttributeRepository
     {
-        public List<EmailModel> GetAll()
+        public List<EmailAttribute> GetAll()
         {
             try {
-                List<EmailModel> data = null;
+                List<EmailAttribute> data = null;
                 using (DatabaseContext db = new DatabaseContext()) {
-                    data = db.Emails.ToList();
-                    foreach(EmailAttribute attribute in Repository.EmailAttributes.GetAll()) {
-                        data.First(x => x.EmailKey == attribute.EmailKey).Attributes.Add(Repository.Attributes.Get(attribute.AttributeId));
-                    }
+                    data = db.EmailAttributes.ToList();
                 }
                 return data;
             } catch (Exception exception) {
@@ -26,15 +23,15 @@ namespace RecruitmentTaskBatchApp.Data.Repository
             }
         }
 
-        public EmailModel Get(string key)
+        public EmailAttribute Get(int id)
         {
-            return GetAll().FirstOrDefault(x => x.EmailKey == key);
+            return GetAll().FirstOrDefault(x => x.Id == id);
         }
 
-        public void Save(EmailModel data)
+        public void Save(EmailAttribute data)
         {
             using (DatabaseContext db = new DatabaseContext()) {
-                db.Emails.Add(data);
+                db.EmailAttributes.Add(data);
                 db.SaveChanges();
             }
         }

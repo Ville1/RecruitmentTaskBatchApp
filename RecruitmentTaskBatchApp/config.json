@@ -2,5 +2,6 @@
   "FileLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp",
   "ArchiveLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp\\Archive",
   "FileNamePattern": "emails_????????.txt",
-  "DBConnectionString": "XXX"
+  "DBConnectionString": "XXX",
+  "ArchiveOldFiles": false
 }
