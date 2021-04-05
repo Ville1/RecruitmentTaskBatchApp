@@ -3,5 +3,9 @@
   "ArchiveLocation": "C:\\Users\\Ville\\Documents\\Test\\Temp\\Archive",
   "FileNamePattern": "emails_????????.txt",
   "DBConnectionString": "XXX",
-  "ArchiveOldFiles": false
+  "ArchiveOldFiles": false,
+  "SendGridAPIKey": "XXX",
+  "SendGridEmail": "test@test.fi",
+  "SendGridEmailName": "test name",
+  "SendGridSubject": "10 attributes"
 }

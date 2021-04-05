@@ -31,7 +31,9 @@ namespace RecruitmentTaskBatchApp.Data.Repository
         public void Save(AttributeData data)
         {
             using (DatabaseContext db = new DatabaseContext()) {
-                db.Attributes.Add(data);
+                if(data.Id == 0 || db.Attributes.FirstOrDefault(x => x.Id == data.Id) == null) {
+                    db.Attributes.Add(data);
+                }
                 db.SaveChanges();
             }
         }

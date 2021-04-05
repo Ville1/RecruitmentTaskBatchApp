@@ -34,7 +34,9 @@ namespace RecruitmentTaskBatchApp.Data.Repository
         public void Save(EmailModel data)
         {
             using (DatabaseContext db = new DatabaseContext()) {
-                db.Emails.Add(data);
+                if(db.Emails.FirstOrDefault(x => x.EmailKey == data.EmailKey) == null) {
+                    db.Emails.Add(data);
+                }
                 db.SaveChanges();
             }
         }

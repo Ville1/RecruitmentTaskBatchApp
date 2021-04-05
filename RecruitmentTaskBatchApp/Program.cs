@@ -2,6 +2,8 @@
 using RecruitmentTaskBatchApp.Data.DB.Model;
 using RecruitmentTaskBatchApp.Data.Repository;
 using RecruitmentTaskBatchApp.Utils;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,6 +83,9 @@ namespace RecruitmentTaskBatchApp
                     }
                 }
             }
+            foreach(EmailModel email in tenAttributes) {
+                SendTenAttributesEmail(email);
+            }
         }
 
         private static AttributeData GetAttribute(string name)
@@ -93,6 +98,18 @@ namespace RecruitmentTaskBatchApp
                 attributeData = Repository.Attributes.GetAll().First(x => x.Name == name);
             }
             return attributeData;
+        }
+
+        private static void SendTenAttributesEmail(EmailModel email)
+        {
+            SendGridClient client = new SendGridClient(Config.SendGridAPIKey);
+            EmailAddress sender = new EmailAddress(Config.SendGridEmail, Config.SendGridEmailName);
+            EmailAddress receiver = new EmailAddress(email.Email);
+            SendGridMessage message = MailHelper.CreateSingleEmail(sender, receiver, Config.SendGridSubject, string.Join(", ", email.Attributes.Select(x => x.Name).ToArray()), null);
+            Response response = client.SendEmailAsync(message).Result;
+            if (!response.IsSuccessStatusCode) {
+                Logger.Log(string.Format("Sending email to {0} failed with status code {1}", email.Email, response.StatusCode.ToString()));
+            }
         }
     }
 }

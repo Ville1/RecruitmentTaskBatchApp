@@ -8,5 +8,10 @@ namespace RecruitmentTaskBatchApp.Utils
         {
             //Logging would go here
         }
+
+        public static void Log(string message)
+        {
+
+        }
     }
 }
